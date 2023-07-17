@@ -26,12 +26,12 @@ M18 - Automação de tarefas com Grunt
             npm i --save-dev grunt-contrib-less //instala o plugin do LESS
         gruntfile.js:
             less: { //incluir após o pkg
-                development: {
+                development: {//task deseenvolvimento
                     files: {
                         'main.css': 'main.less'
                     }
                 },
-                production: {
+                production: {//task produção
                     options: {
                         compress: true,
                     },
@@ -65,4 +65,22 @@ M18 - Automação de tarefas com Grunt
             }
             grunt.loadNpmTasks('grunt-concurrent'); //carregar o concurrent antes de registrar as tarefas
             grunt.registerTask('default', ['concurrent']); // aqui vai apenas a tarefa 'concurrent'
-    M18.5 - 
+    M18.5 - Iniciando um projeto com o Grunt
+        package.json:
+            "build": "grunt build", //adicionar este script
+        gruntfile.js:
+            grunt.registerTask('build', ['less:production']);
+    M18.6 - Grunt watch
+        terminal:
+            npm i --save-dev grunt-contrib-watch
+        guntfile.js:
+            watch: {
+                less: {
+                    files: ['src/styles/**/*.less'],
+                    tasks: ['less:development']
+                }
+            }
+            grunt.loadNpmTasks('grunt-contrib-watch');
+            grunt.registerTask('default', ['watch']);
+    M18.7 - Comprimindo HTML com o Grunt
+        
