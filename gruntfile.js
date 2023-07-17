@@ -25,6 +25,9 @@ module.exports = function(grunt) {
                     'main2.css': 'main.scss'
                 }
             }
+        },
+        concurrent: {
+            target: ['less', 'sass']
         }
     })
     grunt.registerTask("olaGrunt", function() {
@@ -36,6 +39,7 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-concurrent');
 
-    grunt.registerTask('default', ['less', 'sass']);
+    grunt.registerTask('default', ['concurrent']);
 }

@@ -43,7 +43,7 @@ M18 - Automação de tarefas com Grunt
             grunt.loadNpmTasks('grunt-contrib-less'); //carregar o less antes de registrar as tarefas
         terminal:
             npm i --save-dev grunt-contrib-sass
-        gruntfile.js
+        gruntfile.js:
             sass: { //incluir após o pkg
                 dist: {
                     options: {
@@ -57,4 +57,12 @@ M18 - Automação de tarefas com Grunt
             grunt.loadNpmTasks('grunt-contrib-sass'); //carregar o sass antes de registrar as tarefas
             grunt.registerTask('default', ['less', 'sass']);
     M18.4 -Executando tarefas de forma paralela
-        terminal: npm i --save-dev grunt-concurrent
+        terminal:
+            npm i --save-dev grunt-concurrent
+        gruntfile.js:
+            concurrent: { //incluir após o pkg
+                target: ['less', 'sass'] // aqui vão as tarefas
+            }
+            grunt.loadNpmTasks('grunt-concurrent'); //carregar o concurrent antes de registrar as tarefas
+            grunt.registerTask('default', ['concurrent']); // aqui vai apenas a tarefa 'concurrent'
+    M18.5 - 
