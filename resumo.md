@@ -83,4 +83,72 @@ M18 - Automação de tarefas com Grunt
             grunt.loadNpmTasks('grunt-contrib-watch');
             grunt.registerTask('default', ['watch']);
     M18.7 - Comprimindo HTML com o Grunt
-        
+        terminal:
+            npm i --save-dev grunt-replace
+        gruntfile.js:
+            replace: {
+                dev: {
+                    options: {
+                        patterns: [
+                            {
+                                match: 'ENDERECO_DO_CSS',
+                                replacement: './styles/main.css'
+                            }
+                        ]
+                    },
+                    files: [
+                        {
+                            expand: true,
+                            flatten: true,
+                            src: 'src/index.html',
+                            dest: 'dev/'
+                        }
+                    ]
+                },
+                dist: {
+                    options: {
+                        patterns: [
+                            {
+                                match: 'ENDERECO_DO_CSS',
+                                replacement: './styles/main.min.css'
+                            }
+                        ]
+                    },
+                    files: [
+                        {
+                            expand: true,
+                            flatten: true,
+                            src: 'prebuild/index.html',
+                            dest: 'dist/'
+                        }
+                    ]
+                }
+            },
+            grunt.loadNpmTasks('grunt-replace');
+
+        terminal:
+            npm i --save-dev grunt-contrib-htmlmin
+        gruntfile.js:
+            htmlmin: {
+                dist: {
+                    options: {
+                        removeComments: true,
+                        collapseWhitespace: true
+                    },
+                    files: {
+                        'prebuild/index.html': 'src/index.html'
+                    }
+                }
+            },
+            grunt.loadNpmTasks('grunt-contrib-htmlmin');
+
+        terminal:
+            npm i --save-dev grunt-contrib-clean
+        gruntfile.js:
+            clean: ['prebuild']
+            grunt.loadNpmTasks('grunt-contrib-clean');
+
+    M18.8 - JavaScript Math
+    M18.9 - Comprimindo JavaScript com o Grunt
+        terminal:
+            npm i -D grunt-contrib-uglify
